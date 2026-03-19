@@ -1,6 +1,8 @@
 # Digital Twin SaaS
 
-A model-based probabilistic digital twin platform that mirrors industrial and operational processes, enables scenario simulation, and delivers optimised operating decisions through an interactive user dashboard.
+A domain-agnostic digital twin engine. Given any dataset and a plain-text problem description, Nahual automatically generates schema contracts, fits a probabilistic model, optimises decisions via reinforcement learning, and delivers an interactive dashboard — without hardcoding any domain-specific logic.
+
+The system is validated in Phase 1 using a manufacturing dataset. In Phase 2, the OR agent becomes fully dynamic and can ingest any new dataset autonomously.
 
 ---
 
@@ -19,16 +21,18 @@ This platform builds a **digital twin** of a client's operational system by:
 ## Architecture Overview
 
 ```
-Client DB
-    ↓
-[OR Agent] → schema.json, model_spec.json
-    ↓
+Human provides:
+  dataset + problem_description.json
+          ↓
+[OR Agent] → reads dataset + problem description
+           → generates schema.json, model_spec.json
+          ↓
 [ML Agent] → sim_api.py  (< 500 ms SLA)
-    ↓
+          ↓
 [RL Agent] → policy.json (≥ 3 evaluated scenarios)
-    ↓
-[UX Agent] → dashboard/
-    ↑
+          ↓
+[UX Agent] → dashboard/  (auto-adapts to any schema.json)
+          ↑
 [PM Agent] — orchestrates pipeline, interfaces with human
 ```
 
@@ -136,6 +140,24 @@ npm run dev
 **Data boundary.** The RL agent never touches the client database. All DB access is mediated by OR, which exposes only schema and model artifacts.
 
 **JSON contracts.** Agents communicate exclusively through versioned JSON files in `context/`. Prose hand-offs are prohibited.
+
+---
+## Build Phases
+
+**Phase 1 — Pilot (current)**
+Validate the full pipeline end-to-end using a manufacturing dataset.
+`schema.json` is hand-authored. Hardcoding is permitted temporarily and
+marked with `# PHASE_1_ONLY` comments.
+
+**Phase 2 — Dynamic Schema**
+OR agent learns to read any dataset and auto-generate `schema.json` and
+`model_spec.json` from `problem_description.json`. No manual schema work required.
+
+**Phase 3 — Dynamic Dashboard**
+UX agent auto-adapts controls and visualisations to whatever `schema.json` contains.
+No hardcoded variable names anywhere in the UI.
+
+The transition from Phase 1 to Phase 2 is the system's most important milestone.
 
 ---
 
