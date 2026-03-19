@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "owner": "or",
+    "last_updated": "2026-03-19",
+    "status": "draft"
+  },
+  "database": {
+    "tables": []
+  },
+  "causal_graph": {
+    "nodes": [],
+    "edges": []
+  }
+}

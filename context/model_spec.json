@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "owner": "or",
+    "last_updated": "2026-03-19",
+    "status": "draft"
+  },
+  "model_type": "",
+  "inputs": [],
+  "outputs": [],
+  "latent_variables": [],
+  "constraints": []
+}

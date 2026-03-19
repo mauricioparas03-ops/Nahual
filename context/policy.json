@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "owner": "rl",
+    "last_updated": "2026-03-19",
+    "status": "draft"
+  },
+  "algorithm": "",
+  "objective": "",
+  "action_space": {
+    "variables": [],
+    "bounds": {}
+  },
+  "evaluated_scenarios": [],
+  "training_metadata": {}
+}

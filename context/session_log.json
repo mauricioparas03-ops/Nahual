@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "owner": "pm",
+    "last_updated": "2026-03-19",
+    "status": "draft"
+  },
+  "engine_phase": "phase_1",
+  "pipeline_gate_status": {
+    "schema_validated": false,
+    "sim_api_reviewed": false,
+    "policy_scenarios_met": false
+  },
+  "sessions": [],
+  "task_queue": []
+}
